@@ -1,10 +1,15 @@
 import './App.css';
-
+import Navigator from './Routes/Navigator';
+import { Provider } from 'react-redux';
 function App() {
   return (
-    <div className='App'>
-      <h1>Setup</h1>
+    // <h1>fvs</h1>
+    // <Provider >
+    <div className='flex flex-col min-h-screen'>
+      <Navigator />
     </div>
+      
+    // </Provider>
   );
 }
 

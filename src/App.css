@@ -6,7 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.loginDiv{
+  background: linear-gradient(151deg, rgba(0,10,154,1) 0%, rgba(138,154,255,0.9893207282913166) 100%)
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
