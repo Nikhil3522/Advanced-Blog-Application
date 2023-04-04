@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Blog, user } from "../Constants/Constants";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const AddBlog = () => {
+    const navigate = useNavigate();
     const [blogTitle, setVlogTitle] = useState("");
     const [textValue, setTextValue] = useState("");
     const [warning, setWarning] = useState(false);
@@ -18,6 +22,19 @@ const AddBlog = () => {
         avatar: null
     });
     const userId = sessionStorage.getItem('userId');
+
+    const notify = () =>{
+        toast.error('Please fill all the data!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    }
 
     useEffect(() => {
         user.map((item) => (
@@ -77,7 +94,11 @@ const AddBlog = () => {
 
             }
 
+            // change location to home page
+            navigate('/');
+
         }else{
+            notify();
             setWarning(true);
             setTimeout(() => (setWarning(false)), 3000)
         }
@@ -145,6 +166,7 @@ const AddBlog = () => {
             >
                 <h1 className="mt-2">POST</h1>
             </div>
+            <ToastContainer />
         </div>
     )
 }

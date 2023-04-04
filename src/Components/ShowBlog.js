@@ -13,6 +13,7 @@ const ShowBlog = () => {
                 temp[i] = parsedObject;
             })
         }
+        temp.reverse();
         // console.log("temp", temp)
         setSessionBlogList(temp);
     }, [])

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import search from  '../Assets/Icon/search.png'
 
     
 
@@ -22,8 +23,13 @@ const Header =() =>{
                 >
                     Add Blog
                 </div>
-                <div className="cursor-pointer hover:font-bold w-[70px]">
-                    Contact
+                <div className="cursor-pointer hover:font-bold w-[200px] flex justify-around h-[30px] ">
+                    <input
+                        type="text" 
+                        placeholder='search'
+                        className='w-[140px]'
+                    />
+                    <img src={search} />
                 </div>
                 <div 
                     className="cursor-pointer hover:font-bold w-[70px]"
