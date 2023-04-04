@@ -5,6 +5,7 @@ import AddBlog from '../Pages/AddBlog';
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import PrivateRoute from '../Components/PrivateRoute';
+import FullBlog from '../Pages/FullBlog';
 
 const Navigator = () => {
   // const [isAuthenticated, setIsAuthenticated] = useState(0);
@@ -29,6 +30,13 @@ const Navigator = () => {
             element={
             <PrivateRoute >
               <AddBlog />
+            </PrivateRoute>
+            } 
+        />
+        <Route path="/full-blog/:blogId" 
+            element={
+            <PrivateRoute >
+              <FullBlog />
             </PrivateRoute>
             } 
         />

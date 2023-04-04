@@ -62,7 +62,7 @@ const AddBlog = () => {
     useEffect(() => {
         console.log("final", blogObj);
         if(blogObj.thumbnail != null && blogObj.title != null && blogObj.content != null){
-            const blogList  = sessionStorage.getItem('blog');
+            const blogList  = localStorage.getItem('blog');
             
             if(blogList != null){
                 const parsedArray = JSON.parse(blogList);
@@ -85,12 +85,12 @@ const AddBlog = () => {
                 const jsonObject = JSON.stringify(blogObj);
                 const temp = [jsonObject];
                 const jsonArray = JSON.stringify(temp);
-                sessionStorage.setItem('blog', finalArr);
+                localStorage.setItem('blog', finalArr);
             }else{
                 const jsonObject = JSON.stringify(blogObj);
                 const temp = [jsonObject];
                 const jsonArray = JSON.stringify(temp);
-                sessionStorage.setItem('blog', jsonArray);
+                localStorage.setItem('blog', jsonArray);
 
             }
 
