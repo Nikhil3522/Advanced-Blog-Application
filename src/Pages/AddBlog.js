@@ -5,11 +5,13 @@ const AddBlog = () => {
     const [blogTitle, setVlogTitle] = useState("");
     const [textValue, setTextValue] = useState("");
     const [warning, setWarning] = useState(false);
+    const [author, setAuthor] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [blogObj, setBlogObj] = useState({
         thumbnail: null,
         title: null,
         content: null,
+        author: null,
     })
     const [userProfile, setUserProfile] = useState({
         userName: null,
@@ -76,7 +78,7 @@ const AddBlog = () => {
             }
 
         }else{
-            
+            setWarning(true);
             setTimeout(() => (setWarning(false)), 3000)
         }
     }, [blogObj])
@@ -86,7 +88,8 @@ const AddBlog = () => {
         setBlogObj({
             thumbnail: selectedImage,
             title: blogTitle,
-            content: textValue
+            content: textValue,
+            author: (sessionStorage.getItem('userId'))
         });
     }
 
