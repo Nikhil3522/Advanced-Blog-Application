@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const FullBlog = () => {
     const navigate = useNavigate();
     const [showOption, setShowOption] = useState(false);
+    const [userId, setUserId] = useState(null);
     const { blogId } = useParams();
     const [sessionBlog, setSessionBlog] = useState(null);
 
@@ -20,6 +21,12 @@ const FullBlog = () => {
     }
 
     useEffect(() => {
+        console.log("session", sessionBlog.author)
+    }, [sessionBlog])
+
+    useEffect(() => {
+        var tempUserId = sessionStorage.getItem('userId');
+        setUserId(tempUserId);
         var temp = localStorage.getItem('blog');
         temp = JSON.parse(temp);
         if(temp){
@@ -45,29 +52,33 @@ const FullBlog = () => {
                             </div> : null
                     ))}
                     <h1 className='font-bold w-[85%] text-[35px] text-center my-2 text-blue-600'>{sessionBlog.title}</h1>
-                    <div 
-                        className='mt-4 hover:cursor-pointer'
-                        onClick={() => (setShowOption(!showOption))}
-                    >
-                        <img src={menu}/>
-                        {showOption ? 
-                            <div className="bg-blue-500 p-1 absolute text-white">
-                                <h2 
-                                    className="border-2 p-1 hover:bg-white hover:text-black"
-                                    onClick={() => (deleteBlog())}
-                                >
-                                    Delete
-                                </h2>
-                                <h2 
-                                    className="border-2 p-1 hover:bg-white hover:text-black"
-                                    // onClick={() => ()}
-                                >
-                                    Edit
-                                </h2>
-                            </div> : null
-                        }
-                        
-                    </div>
+
+                    {
+                        sessionBlog.author == userId || userId == 0 ?
+                        <div 
+                            className='mt-4 hover:cursor-pointer'
+                            onClick={() => (setShowOption(!showOption))}
+                        >
+                            <img src={menu}/>
+                            {showOption ? 
+                                <div className="bg-blue-500 p-1 absolute text-white">
+                                    <h2 
+                                        className="border-2 p-1 hover:bg-white hover:text-black"
+                                        onClick={() => (deleteBlog())}
+                                    >
+                                        Delete
+                                    </h2>
+                                    <h2 
+                                        className="border-2 p-1 hover:bg-white hover:text-black"
+                                        // onClick={() => ()}
+                                    >
+                                        Edit
+                                    </h2>
+                                </div> : null
+                            }
+                            
+                        </div>: null
+                    }
                 </div>
                 <div className=' flex flex-col overflow-hidden text-clip mt-4'>
                     <div className='w-[50%] m-[auto]'>

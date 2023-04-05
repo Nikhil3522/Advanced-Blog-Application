@@ -19,6 +19,9 @@ const Login = () => {
         if(userName == "Nikhil" && password == 123){
             sessionStorage.setItem('userId', 1);
             navigate('/');
+        }else if(userName == "Admin" && password == "Admin"){
+            sessionStorage.setItem('userId', 0);
+            navigate('/');
         }else{
             setWarning(1);
             setTimeout(() => {
