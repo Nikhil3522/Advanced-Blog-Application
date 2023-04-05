@@ -23,7 +23,7 @@ const ShowBlog = () => {
     
    return (
     // <div className=" bg-pink-300">
-        <div className=" flex flex-col w-[700px] m-[auto]">
+        <div className=" flex flex-col w-[700px] m-[auto] xs:w-[100%]">
             {sessionBlogList ?
             sessionBlogList.map((item, index) => (
                     <div
@@ -41,12 +41,12 @@ const ShowBlog = () => {
                             ))}
                             <h1 className='font-bold w-[85%] text-[35px] text-center my-2 text-blue-600'>{item.title}</h1>
                         </div>
-                        <div className=' flex max-h-[260px] overflow-hidden text-clip mt-4'>
-                            <div className='w-[50%]'>
+                        <div className=' flex xs:flex-col max-h-[260px] xs:max-h-[500px] overflow-hidden text-clip mt-4'>
+                            <div className='w-[50%] xs:w-[70%] xs:m-[auto]'>
                                 {/* {console.log("thumbnail", item.thumbnail)} */}
                                 <img src={item.thumbnail} />
                             </div>
-                            <div className='w-[50%]'>
+                            <div className='w-[50%] xs:w-[100%]'>
                             <p className='text-[20px] text-center mt-4 text-ellipsis'>{item.content}</p>
                             </div>
                         </div>

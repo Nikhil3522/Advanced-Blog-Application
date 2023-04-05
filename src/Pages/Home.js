@@ -3,7 +3,7 @@ import ShowBlog from "../Components/ShowBlog";
 
 const Home = () => {
     return (
-        <div className="px-[50px]">
+        <div className="px-[50px] xs:px-[20px]">
             <AddBlogButton />
             <ShowBlog />
         </div>
