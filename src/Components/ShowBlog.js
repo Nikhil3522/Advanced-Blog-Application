@@ -23,7 +23,7 @@ const ShowBlog = () => {
     
    return (
     // <div className=" bg-pink-300">
-        <div className=" flex flex-col w-[700px] m-[auto] ">
+        <div className=" flex flex-col xs:w-[100%] md:w-[700px] m-[auto] ">
             {sessionBlogList ?
             sessionBlogList.map((item, index) => (
                     <div
@@ -35,7 +35,7 @@ const ShowBlog = () => {
                             {user.map(({userId, userName, avatar}) => (
                                 (userId == item.author) ? 
                                     <div className='w-[15%] flex flex-col'>
-                                        <img src={avatar} className='rounded-[50%] w-[70px] h-[70px] object-cover border-2 m-[auto] bg-blue-500' />
+                                        <img src={avatar} className='rounded-[50%] md:w-[70px] md:h-[70px] xs:w-[50px] xs:h-[50px] object-cover border-2 m-[auto] bg-blue-500' />
                                         <h3 className='m-[auto]'>{userName}</h3>
                                     </div> : null
                             ))}

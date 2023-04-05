@@ -33,7 +33,7 @@ const Login = () => {
         }
     }
     return (    
-        <div className="loginDiv w-[500px] h-[300px] rounded-[7px] m-[auto] flex flex-col py-10">
+        <div className="loginDiv md:w-[500px] xs:w-[95%] h-[300px] rounded-[7px] m-[auto] flex flex-col py-10">
             <p className="text-white text-center">UserName is Nikhil and Password is 123</p>
             <p className="text-white text-center">UserName is Admin and Password is Admin</p>
             <p className="text-white text-center">UserName is Virat and Password is 123</p>

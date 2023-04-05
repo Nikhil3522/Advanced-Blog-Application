@@ -127,7 +127,7 @@ const AddBlog = () => {
             <div className="m-[auto] flex flex-col">
                 <div className="flex  justify-between">
                     <div className="m-[auto] ">
-                        <img src={userProfile.avatar} className="rounded-[50%] w-[90px] h-[90px] object-cover" />
+                        <img src={userProfile.avatar} className="rounded-[50%] md:w-[90px] md:h-[90px] xs:w-[50px] xs:w-[50px] object-cover" />
                         <h1 className="font-bold text-center">{userProfile.userName}</h1>
                     </div>
                     <div className="w-[220px]">
@@ -156,7 +156,7 @@ const AddBlog = () => {
                 />
                 <ReactQuill 
                     theme="snow" 
-                    className="h-[200px] mb-[50px]"
+                    className="h-[200px] md:mb-[50px] xs:mb-[100px]"
                     value={textValue} 
                     onChange={setTextValue}
                     placeholder="Content"
