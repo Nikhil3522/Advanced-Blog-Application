@@ -47,7 +47,11 @@ const ShowBlog = () => {
                                 <img src={item.thumbnail} />
                             </div>
                             <div className='w-[50%] '>
-                            <p className='text-[20px] text-center mt-4 text-ellipsis'>{item.content}</p>
+                            <p 
+                                className='text-[20px] text-center mt-4 text-ellipsis' 
+                                dangerouslySetInnerHTML={{ __html: item.content }}
+                            >
+                            </p>
                             </div>
                         </div>
                     </div>

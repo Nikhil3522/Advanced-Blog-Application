@@ -4,9 +4,12 @@ import { Blog, user } from "../Constants/Constants";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const AddBlog = () => {
     const navigate = useNavigate();
+    const [value, setValue] = useState('');
     const [blogTitle, setVlogTitle] = useState("");
     const [textValue, setTextValue] = useState("");
     const [warning, setWarning] = useState(false);
@@ -23,6 +26,10 @@ const AddBlog = () => {
         avatar: null
     });
     const userId = sessionStorage.getItem('userId');
+
+    useEffect(() =>{
+        console.log("value", value);
+    }, [value])
 
     const notify = () =>{
         toast.error('Please fill all the data!', {
@@ -147,13 +154,20 @@ const AddBlog = () => {
                     value={blogTitle}
                     onChange={(e) => setVlogTitle(e.target.value)}
                 />
-                <textarea
+                <ReactQuill 
+                    theme="snow" 
+                    className="h-[200px] mb-[50px]"
+                    value={textValue} 
+                    onChange={setTextValue}
+                    placeholder="Content"
+                />
+                {/* <textarea
                     className="border-2 h-[200px] w-[400px] p-2"
                     id="my-textarea"
                     value={textValue}
                     onChange={(e) => setTextValue(e.target.value)}
                     placeholder="Content"
-                />
+                /> */}
             </div>
             {warning ?
                 <div className="text-center text-red-600 font-bold">

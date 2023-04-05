@@ -75,7 +75,11 @@ const FullBlog = () => {
                         <img src={sessionBlog.thumbnail}/>
                     </div>
                     <div >
-                    <p className='text-[20px] text-center mt-4 text-ellipsis'>{sessionBlog.content}</p>
+                    <p 
+                        className='text-[20px] text-center mt-4 text-ellipsis' 
+                        dangerouslySetInnerHTML={{ __html: sessionBlog.content }}
+                    >
+                    </p>
                     </div>
                 </div>
             </div>: null}
