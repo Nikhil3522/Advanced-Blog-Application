@@ -21,10 +21,6 @@ const FullBlog = () => {
     }
 
     useEffect(() => {
-        console.log("session", sessionBlog.author)
-    }, [sessionBlog])
-
-    useEffect(() => {
         var tempUserId = sessionStorage.getItem('userId');
         setUserId(tempUserId);
         var temp = localStorage.getItem('blog');

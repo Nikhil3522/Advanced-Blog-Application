@@ -33,9 +33,12 @@ const Header =() =>{
                 </div>
                 <div 
                     className="cursor-pointer hover:font-bold w-[70px]"
-                    onClick={() => (navigate('/login'))}
+                    onClick={() => {
+                        sessionStorage.clear()
+                        navigate('login')
+                    }}
                 >
-                    Login
+                    Logout
                 </div>
             </div>
         </div>
