@@ -1,10 +1,23 @@
 import { useEffect, useState } from "react";
 import {user} from '../Constants/Constants';
 import { useParams } from 'react-router-dom';
+import menu from '../Assets/Icon/menu.png';
+import { useNavigate } from "react-router-dom";
 
 const FullBlog = () => {
+    const navigate = useNavigate();
+    const [showOption, setShowOption] = useState(false);
     const { blogId } = useParams();
     const [sessionBlog, setSessionBlog] = useState(null);
+
+    const deleteBlog = () => {
+        var temp = localStorage.getItem('blog');
+        temp = JSON.parse(temp);
+        temp.splice(blogId, 1);
+        temp = JSON.stringify(temp)
+        localStorage.setItem('blog', temp)
+        navigate('/');
+    }
 
     useEffect(() => {
         var temp = localStorage.getItem('blog');
@@ -22,7 +35,7 @@ const FullBlog = () => {
     return (
         <div className="px-[50px] flex">
             {sessionBlog != null ?
-            <div className="flex w-[700px] m-[auto] flex-col mt-20 border-2 p-4 bg-slate-100 shadow-md rounded-xl hover:shadow-lg hover:cursor-pointer">
+            <div className="flex w-[700px] m-[auto] flex-col mt-20 border-2 p-4 bg-slate-100 shadow-md rounded-xl hover:shadow-lg">
                 <div className='flex justify-around'>
                     {user.map(({userId, userName, avatar}) => (
                         (userId == sessionBlog.author) ? 
@@ -32,6 +45,29 @@ const FullBlog = () => {
                             </div> : null
                     ))}
                     <h1 className='font-bold w-[85%] text-[35px] text-center my-2 text-blue-600'>{sessionBlog.title}</h1>
+                    <div 
+                        className='mt-4 hover:cursor-pointer'
+                        onClick={() => (setShowOption(!showOption))}
+                    >
+                        <img src={menu}/>
+                        {showOption ? 
+                            <div className="bg-blue-500 p-1 absolute text-white">
+                                <h2 
+                                    className="border-2 p-1 hover:bg-white hover:text-black"
+                                    onClick={() => (deleteBlog())}
+                                >
+                                    Delete
+                                </h2>
+                                <h2 
+                                    className="border-2 p-1 hover:bg-white hover:text-black"
+                                    // onClick={() => ()}
+                                >
+                                    Edit
+                                </h2>
+                            </div> : null
+                        }
+                        
+                    </div>
                 </div>
                 <div className=' flex flex-col overflow-hidden text-clip mt-4'>
                     <div className='w-[50%] m-[auto]'>
