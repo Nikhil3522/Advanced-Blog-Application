@@ -28,15 +28,17 @@ const Header =() =>{
                     />
                     <img src={search} />
                 </div> */}
-                <div 
-                    className="cursor-pointer hover:font-bold w-[70px]"
-                    onClick={() => {
-                        sessionStorage.clear()
-                        navigate('login')
-                    }}
-                >
-                    Logout
-                </div>
+                {sessionStorage.getItem('userId') != null ? 
+                    <div 
+                        className="cursor-pointer hover:font-bold w-[70px]"
+                        onClick={() => {
+                            sessionStorage.clear()
+                            navigate('login')
+                        }}
+                    >
+                        Logout
+                    </div> : null
+                }
             </div>
         </div>
     )

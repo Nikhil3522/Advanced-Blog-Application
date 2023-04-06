@@ -156,7 +156,7 @@ const AddBlog = () => {
                 />
                 <ReactQuill 
                     theme="snow" 
-                    className="h-[200px] md:mb-[50px] xs:mb-[100px]"
+                    className="h-[200px] xs:max-w-[270px] md:max-w-[370px] md:mb-[50px] xs:mb-[100px]"
                     value={textValue} 
                     onChange={setTextValue}
                     placeholder="Content"

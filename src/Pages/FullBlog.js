@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import {user} from '../Constants/Constants';
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import menu from '../Assets/Icon/menu.png';
 import { useNavigate } from "react-router-dom";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const FullBlog = () => {
     const navigate = useNavigate();
@@ -10,6 +13,21 @@ const FullBlog = () => {
     const [userId, setUserId] = useState(null);
     const { blogId } = useParams();
     const [sessionBlog, setSessionBlog] = useState(null);
+    const [edit, setEdit] = useState(false);
+    const [textValue, setTextValue] = useState("");
+
+    const notify = (message) =>{
+        toast.success(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
 
     const deleteBlog = () => {
         var temp = localStorage.getItem('blog');
@@ -18,6 +36,23 @@ const FullBlog = () => {
         temp = JSON.stringify(temp)
         localStorage.setItem('blog', temp)
         navigate('/');
+    }
+
+    const onSubmit = async () => {
+        var tempObj = sessionBlog;
+        tempObj.content = textValue;
+        tempObj =  JSON.stringify(tempObj);
+        // console.log("s", tempObj);
+
+        var temp = localStorage.getItem('blog');
+        temp = await JSON.parse(temp);
+        await temp.reverse();
+        temp[blogId] = tempObj;
+        await temp.reverse();
+        temp = JSON.stringify(temp);
+        localStorage.setItem('blog', temp);
+        notify("New content Saved!");
+        // navigate('/');
     }
 
     useEffect(() => {
@@ -66,7 +101,11 @@ const FullBlog = () => {
                                     </h2>
                                     <h2 
                                         className="border-2 p-1 hover:bg-white hover:text-black"
-                                        // onClick={() => ()}
+                                        onClick={() => {
+                                            setEdit(!edit)
+                                            setTextValue(sessionBlog.content)
+                                            notify(`Edit mode ${!edit ? 'on': "off"}!`);
+                                        }}
                                     >
                                         Edit
                                     </h2>
@@ -81,15 +120,35 @@ const FullBlog = () => {
                         {/* {console.log("thumbnail", thumbnail)} */}
                         <img src={sessionBlog.thumbnail}/>
                     </div>
-                    <div >
-                    <p 
-                        className='text-[20px] text-center mt-4 text-ellipsis' 
-                        dangerouslySetInnerHTML={{ __html: sessionBlog.content }}
-                    >
-                    </p>
-                    </div>
+                    {edit === false?
+                        <div >
+                        <p 
+                            className='text-[20px] text-center mt-4 text-ellipsis' 
+                            dangerouslySetInnerHTML={{ __html: sessionBlog.content }}
+                        >
+                        </p>
+                        </div> 
+                        :
+                        <div>
+                            <ReactQuill 
+                                theme="snow" 
+                                // className="h-[200px] mt-4 mb-[50px] xs:max-w-[270px] md:min-w-[400px] md:mb-[50px] xs:mb-[100px]"
+                                className="md:h-[250px] md:my-[80px] xs:my-[30px] "
+                                value={textValue} 
+                                onChange={setTextValue}
+                                placeholder="Content"
+                            />
+                            <div 
+                                className="bg-blue-600 w-[80px] text-center text-white  h-[40px] shadow-md rounded-md cursor-pointer hover:font-bold hover:shadow-2xl m-auto"
+                                onClick={() => onSubmit()}
+                            >
+                                <h1 className="mt-2">POST</h1>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>: null}
+            <ToastContainer />
         </div>
     )
 }
