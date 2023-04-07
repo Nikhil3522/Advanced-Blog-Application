@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { Blog, user } from '../Constants/Constants';
 import { useNavigate } from 'react-router-dom';
+import pre  from '../Assets/Icon/Pre.png';
+import next from '../Assets/Icon/next.png';
 
 const PaginatedItems = () => {
     const navigate = useNavigate();
@@ -57,15 +59,17 @@ const PaginatedItems = () => {
                     </div>: null
             ))
             : null}
-            <div>
-                <div onClick={() => setCurrPage(currPage - 1)}>
-                    Pre
+            <div className="flex w-[150px] m-[auto] my-10 justify-around">
+                <div 
+                    onClick={() => setCurrPage(currPage - 1)}
+                >
+                    <img src={pre}/>
                 </div>
-                <div>
+                <div className="my-[auto] m-[auto] text-[20px] font-bold text-blue-600">
                     {currPage}
                 </div>
                 <div onClick={() => setCurrPage(currPage + 1)}>
-                    Next
+                    <img src={next}/>
                 </div>
             </div>
         </div>
