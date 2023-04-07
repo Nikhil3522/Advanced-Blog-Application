@@ -7,6 +7,7 @@ import next from '../Assets/Icon/next.png';
 const PaginatedItems = () => {
     const navigate = useNavigate();
     const [currPage, setCurrPage] = useState(1);
+    const [blogLength, setBlogLength] = useState(0);
     const [sessionBlogList, setSessionBlogList] = useState(null);
 
     useEffect(() => {
@@ -18,7 +19,8 @@ const PaginatedItems = () => {
                 temp[i] = parsedObject;
             })
             temp.reverse();
-
+            console.log("lenth", temp.length)
+            setBlogLength(temp.length);
         }
         // console.log("temp", temp)
         setSessionBlogList(temp);
@@ -61,14 +63,25 @@ const PaginatedItems = () => {
             : null}
             <div className="flex w-[150px] m-[auto] my-10 justify-around">
                 <div 
-                    onClick={() => setCurrPage(currPage - 1)}
+                    className="cursor-pointer"
+                    onClick={() =>{
+                        if(currPage > 1){
+                            setCurrPage(currPage - 1)
+                        }
+                    }}
                 >
                     <img src={pre}/>
                 </div>
                 <div className="my-[auto] m-[auto] text-[20px] font-bold text-blue-600">
                     {currPage}
                 </div>
-                <div onClick={() => setCurrPage(currPage + 1)}>
+                <div className="cursor-pointer"
+                    onClick={() => {
+                        if((currPage*3 ) < blogLength){
+                            setCurrPage(currPage + 1)
+                        }
+                    }} 
+                >
                     <img src={next}/>
                 </div>
             </div>
