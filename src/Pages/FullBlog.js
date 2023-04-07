@@ -29,9 +29,10 @@ const FullBlog = () => {
         });
     }
 
-    const deleteBlog = () => {
+    const deleteBlog = async () => {
         var temp = localStorage.getItem('blog');
         temp = JSON.parse(temp);
+        await temp.reverse();
         temp.splice(blogId, 1);
         temp = JSON.stringify(temp)
         localStorage.setItem('blog', temp)
