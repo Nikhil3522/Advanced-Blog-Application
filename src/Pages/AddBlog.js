@@ -27,10 +27,6 @@ const AddBlog = () => {
     });
     const userId = sessionStorage.getItem('userId');
 
-    useEffect(() =>{
-        console.log("value", value);
-    }, [value])
-
     const notify = () =>{
         toast.error('Please fill all the data!', {
             position: "top-right",
@@ -60,7 +56,6 @@ const AddBlog = () => {
         const selectedFile = (event.target.files[0]);
         if (selectedFile && selectedFile.type.startsWith("image/")) {
             setSelectedImage(URL.createObjectURL(selectedFile));
-            // setTimeout(() => (console.log("image", selectedImage)), 1000)
 
         } else {
             setSelectedImage(null);
@@ -68,7 +63,6 @@ const AddBlog = () => {
     };
 
     useEffect(() => {
-        console.log("final", blogObj);
         if(blogObj.thumbnail != null && blogObj.title != null && blogObj.content != null){
             const blogList  = localStorage.getItem('blog');
             
@@ -79,7 +73,6 @@ const AddBlog = () => {
                     const parsedObject = JSON.parse(item);
                     finalArr[i] = parsedObject;
                 })
-                console.log("parsed Array", finalArr)
 
                 finalArr = [...finalArr, blogObj];
                 finalArr.map((item, i) => {
@@ -88,7 +81,6 @@ const AddBlog = () => {
 
                 finalArr = JSON.stringify(finalArr);
 
-                console.log("final ARR", finalArr);
 
                 const jsonObject = JSON.stringify(blogObj);
                 const temp = [jsonObject];
@@ -113,7 +105,6 @@ const AddBlog = () => {
     }, [blogObj])
 
     const onSubmit = () => {
-        console.log("post clicked!")
         setBlogObj({
             thumbnail: selectedImage,
             title: blogTitle,

@@ -11,10 +11,6 @@ const SearchBlog = () => {
 
     var {searchText} = useParams()
 
-    useEffect(()=>{
-        console.log("result", result);
-    }, [result])
-
     useEffect( () => {
         var temp = localStorage.getItem('blog');
         temp = JSON.parse(temp);
@@ -64,7 +60,6 @@ const SearchBlog = () => {
                         </div>
                         <div className=' flex  max-h-[260px]  overflow-hidden text-clip mt-4'>
                             <div className='w-[50%] '>
-                                {/* {console.log("thumbnail", item.thumbnail)} */}
                                 <img src={item.thumbnail} />
                             </div>
                             <div className='w-[50%] '>

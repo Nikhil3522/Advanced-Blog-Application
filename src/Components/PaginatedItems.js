@@ -19,10 +19,8 @@ const PaginatedItems = () => {
                 temp[i] = parsedObject;
             })
             temp.reverse();
-            console.log("lenth", temp.length)
             setBlogLength(temp.length);
         }
-        // console.log("temp", temp)
         setSessionBlogList(temp);
     }, [])
     return (
@@ -47,7 +45,6 @@ const PaginatedItems = () => {
                         </div>
                         <div className=' flex  max-h-[260px]  overflow-hidden text-clip mt-4'>
                             <div className='w-[50%] '>
-                                {/* {console.log("thumbnail", item.thumbnail)} */}
                                 <img src={item.thumbnail} />
                             </div>
                             <div className='w-[50%] '>

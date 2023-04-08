@@ -43,7 +43,6 @@ const FullBlog = () => {
         var tempObj = sessionBlog;
         tempObj.content = textValue;
         tempObj =  JSON.stringify(tempObj);
-        // console.log("s", tempObj);
 
         var temp = localStorage.getItem('blog');
         temp = await JSON.parse(temp);
@@ -118,7 +117,6 @@ const FullBlog = () => {
                 </div>
                 <div className=' flex flex-col overflow-hidden text-clip mt-4'>
                     <div className='w-[50%] m-[auto]'>
-                        {/* {console.log("thumbnail", thumbnail)} */}
                         <img src={sessionBlog.thumbnail}/>
                     </div>
                     {edit === false?

@@ -9,11 +9,6 @@ import FullBlog from '../Pages/FullBlog';
 import SearchBlog from '../Pages/SearchBlog';
 
 const Navigator = () => {
-  // const [isAuthenticated, setIsAuthenticated] = useState(0);
-
-  // const userId  = sessionStorage.getItem('userId');
-  // console.log("UserId", userId);
-
 
   return (
     <BrowserRouter>

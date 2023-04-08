@@ -17,7 +17,6 @@ const ShowBlog = () => {
             temp.reverse();
 
         }
-        // console.log("temp", temp)
         setSessionBlogList(temp);
     }, [])
     
@@ -43,7 +42,6 @@ const ShowBlog = () => {
                         </div>
                         <div className=' flex  max-h-[260px]  overflow-hidden text-clip mt-4'>
                             <div className='w-[50%] '>
-                                {/* {console.log("thumbnail", item.thumbnail)} */}
                                 <img src={item.thumbnail} />
                             </div>
                             <div className='w-[50%] '>

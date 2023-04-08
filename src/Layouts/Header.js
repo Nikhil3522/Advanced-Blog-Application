@@ -7,10 +7,6 @@ import { useEffect, useState } from 'react';
 const Header =() =>{
     const [searchInput, setSearchInput] = useState("dgf");
 
-    useEffect(() => {
-        console.log("sear", searchInput);
-    }, [searchInput])
-
     const navigate = useNavigate();
     return (
         <div className="px-[50px] border-1  bg-blue-600 h-[60px] pt-[15px]">
