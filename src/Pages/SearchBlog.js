@@ -18,20 +18,20 @@ const SearchBlog = () => {
     useEffect( () => {
         var temp = localStorage.getItem('blog');
         temp = JSON.parse(temp);
+        var tempResult = [];
         temp.map((item, i) => {
             var tempObj = JSON.parse(item);
             var title = tempObj.title;
             var content = tempObj.content;
             searchText = searchText.toLowerCase();
             if (title.toLowerCase().includes(searchText) || content.toLowerCase().includes(searchText)) {
-                console.log("ok");
-                var tempResult = [];
+            
                 tempResult.push(tempObj);
-                setResult(tempResult);
             }
             temp[i] = tempObj;
         })
-        console.log("temp", temp)
+        setResult(tempResult);
+
         setLoading(false)
     }, []);
 
