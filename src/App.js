@@ -4,26 +4,26 @@ import Navigator from './Routes/Navigator';
 import { Provider } from 'react-redux';
 import { Blog } from './Constants/Constants';
 function App() {
-  const [constBlog, setConstBlog] = useState(null);
+  // const [constBlog, setConstBlog] = useState(null);
 
-  useEffect(() => {
-    var finalArr = null;
-    if(constBlog){
-      constBlog.map((item, i) => {
-        const parsedObject = JSON.stringify(item);
-        constBlog[i] = parsedObject;
-      });
+  // useEffect(() => {
+  //   var finalArr = null;
+  //   if(constBlog){
+  //     constBlog.map((item, i) => {
+  //       const parsedObject = JSON.stringify(item);
+  //       constBlog[i] = parsedObject;
+  //     });
 
-      finalArr = JSON.stringify(constBlog);
-    }
-    console.log("blog", finalArr);
-    localStorage.setItem('blog', finalArr);
+  //     finalArr = JSON.stringify(constBlog);
+  //   }
+  //   console.log("blog", finalArr);
+  //   localStorage.setItem('blog', finalArr);
 
-  }, [constBlog])
+  // }, [constBlog])
   
-  useEffect(() => {
-    setConstBlog(Blog);
-  }, [])
+  // useEffect(() => {
+  //   setConstBlog(Blog);
+  // }, [])
   return (
     // <h1>fvs</h1>
     // <Provider >

@@ -6,6 +6,7 @@ import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import PrivateRoute from '../Components/PrivateRoute';
 import FullBlog from '../Pages/FullBlog';
+import SearchBlog from '../Pages/SearchBlog';
 
 const Navigator = () => {
   // const [isAuthenticated, setIsAuthenticated] = useState(0);
@@ -37,6 +38,13 @@ const Navigator = () => {
             element={
             <PrivateRoute >
               <FullBlog />
+            </PrivateRoute>
+            } 
+        />
+        <Route path="/search-blog/:searchText" 
+            element={
+            <PrivateRoute >
+              <SearchBlog />
             </PrivateRoute>
             } 
         />
