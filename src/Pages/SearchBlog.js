@@ -11,6 +11,10 @@ const SearchBlog = () => {
 
     var {searchText} = useParams()
 
+    const reverseResult = () => {
+        console.log("sfda", result);
+    }
+
     useEffect( () => {
         var temp = localStorage.getItem('blog');
         temp = JSON.parse(temp);
@@ -26,7 +30,9 @@ const SearchBlog = () => {
             }
             temp[i] = tempObj;
         })
+        tempResult.reverse();
         setResult(tempResult);
+        reverseResult();
 
         setLoading(false)
     }, []);
@@ -44,7 +50,7 @@ const SearchBlog = () => {
             <div>
             {result.map((item, index) => (
                     <div
-                        key={index+4} 
+                        key={index} 
                         className="flex flex-col mt-20  border-2 p-4 bg-slate-100 shadow-md rounded-xl hover:shadow-lg hover:cursor-pointer"
                         onClick={() => {navigate(`/full-blog/${index}`)}}
                     >

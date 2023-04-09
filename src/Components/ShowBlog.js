@@ -26,7 +26,7 @@ const ShowBlog = () => {
             {sessionBlogList ?
             sessionBlogList.map((item, index) => (
                     <div
-                        key={index+4} 
+                        key={index} 
                         className="flex flex-col mt-20  border-2 p-4 bg-slate-100 shadow-md rounded-xl hover:shadow-lg hover:cursor-pointer"
                         onClick={() => {navigate(`/full-blog/${index}`)}}
                     >
