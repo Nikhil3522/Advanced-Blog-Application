@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
     
 
 const Header =() =>{
-    const [searchInput, setSearchInput] = useState("dgf");
+    const [searchInput, setSearchInput] = useState(null);
 
     const navigate = useNavigate();
     return (

@@ -11,10 +11,6 @@ const SearchBlog = () => {
 
     var {searchText} = useParams()
 
-    const reverseResult = () => {
-        console.log("sfda", result);
-    }
-
     useEffect( () => {
         var temp = localStorage.getItem('blog');
         temp = JSON.parse(temp);
@@ -32,7 +28,6 @@ const SearchBlog = () => {
         })
         tempResult.reverse();
         setResult(tempResult);
-        reverseResult();
 
         setLoading(false)
     }, []);
